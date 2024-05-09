@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import primsa from "@prisma/client";
 import prisma from "@/prisma/client";
 import { createIssueSchema } from "../../validationSchemas";
 
 export async function POST(request: NextRequest) {
+  
   const body = await request.json();
   const validation = createIssueSchema.safeParse(body);
 
@@ -11,6 +11,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(validation.error.format(), { status: 400 });
   }
 
+  // creating new issue in database
   const newIssue = await prisma.issue.create({
     data: {
       title: body.title,
@@ -19,4 +20,9 @@ export async function POST(request: NextRequest) {
   });
 
   return NextResponse.json(newIssue, { status: 201 });
+}
+
+export async function GET(){
+  const issues = await prisma.issue.findMany();
+  return NextResponse.json(issues);
 }
