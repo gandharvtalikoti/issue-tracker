@@ -1,5 +1,5 @@
 "use client";
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
+import { Button, Callout, Spinner, Text, TextField } from "@radix-ui/themes";
 import React, { useState } from "react";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema } from "@/app/validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
+import SpinnerLoader from "@/app/components/SpinnerLoader";
 
 // interface IssueForm {
 //   title: string;
@@ -22,6 +23,7 @@ type IssueForm = z.infer<typeof createIssueSchema>;
 const NewIssuePage = () => {
   const router = useRouter();
   const [err, setError] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const {
     register,
@@ -32,6 +34,18 @@ const NewIssuePage = () => {
     resolver: zodResolver(createIssueSchema),
   });
 
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      setSubmitting(true);
+      await axios.post("/api/issues", data);
+      router.push("/issues");
+    } catch (error) {
+      setSubmitting(false);
+      setError("An unexpexted error occured");
+      console.log(error);
+    }
+  });
+
   return (
     <div className="max-w-xl">
       {err && (
@@ -39,18 +53,7 @@ const NewIssuePage = () => {
           <Callout.Text color="red">{err}</Callout.Text>
         </Callout.Root>
       )}
-      <form
-        onSubmit={handleSubmit(async (data) => {
-          try {
-            await axios.post("/api/issues", data);
-            router.push("/issues");
-          } catch (error) {
-            setError("An unexpexted error occured");
-            console.log(error);
-          }
-        })}
-        className="space-y-3 "
-      >
+      <form onSubmit={onSubmit} className="space-y-3 ">
         <TextField.Root
           placeholder="Title"
           {...register("title")}
@@ -65,7 +68,10 @@ const NewIssuePage = () => {
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
-        <Button> Submit Issue</Button>
+        <Button disabled={isSubmitting}>
+          Submit Issue
+          {isSubmitting && <SpinnerLoader />}
+        </Button>
       </form>
     </div>
   );

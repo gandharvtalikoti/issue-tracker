@@ -5,6 +5,7 @@ import React from "react";
 import { FaBug } from "react-icons/fa";
 import classnames from "classnames";
 const NavBar = () => {
+  
   const currPath = usePathname();
 
   const links = [
