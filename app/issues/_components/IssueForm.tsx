@@ -44,6 +44,7 @@ const IssueForm = ({ issue }: Props) => {
       if (issue) await axios.put("/api/issues/" + issue.id, data);
       else await axios.post("/api/issues", data);
       router.push("/issues");
+      router.refresh();// this tells nextjs to refresh the content of the current route
     } catch (error) {
       setSubmitting(false);
       setError("An unexpexted error occured");
