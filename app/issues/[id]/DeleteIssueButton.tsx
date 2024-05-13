@@ -1,4 +1,5 @@
 "use client";
+import Spinner from "@/app/components/SpinnerLoader";
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -8,21 +9,28 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
   // after clikcing delete issue we use nextjs Router to send the user BACK to the issues page
   const router = useRouter();
   const [error, setError] = useState(false);
+  const [isDeleting, setDeleting] = useState(false);
 
   const DeleteIssue = async () => {
     try {
+      setDeleting(true);
       await axios.delete("/api/issues/" + issueId);
       router.push("/issues");
       router.refresh();
     } catch (error) {
+      // this line 21 restore the UI in the proper state
+      setDeleting(false);
       setError(true);
     }
-  }
+  };
   return (
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button color="red">Delete Issue</Button>
+          <Button color="red" disabled={isDeleting}>
+            Delete Issue
+            {isDeleting && <Spinner />}
+          </Button>
         </AlertDialog.Trigger>
 
         <AlertDialog.Content>
@@ -39,10 +47,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
             </AlertDialog.Cancel>
 
             <AlertDialog.Action>
-              <Button
-                onClick={DeleteIssue}
-                color="red"
-              >
+              <Button onClick={DeleteIssue} color="red">
                 Delete Issue
               </Button>
             </AlertDialog.Action>
