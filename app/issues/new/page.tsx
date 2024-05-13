@@ -1,17 +1,15 @@
 "use client";
-import { Button, Callout, Spinner, Text, TextField } from "@radix-ui/themes";
-import React, { useState } from "react";
+import { Button, Callout, TextField } from "@radix-ui/themes";
 import dynamic from "next/dynamic";
-
-import "easymde/dist/easymde.min.css";
-import { useForm, Controller } from "react-hook-form";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { createIssueSchema } from "@/app/validationSchemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import "easymde/dist/easymde.min.css";
+import { useRouter } from "next/navigation";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
-import ErrorMessage from "@/app/components/ErrorMessage";
-import SpinnerLoader from "@/app/components/SpinnerLoader";
+import { ErrorMessage, SpinnerLoader } from "@/app/components";
 
 // interface IssueForm {
 //   title: string;
