@@ -1,7 +1,12 @@
-"user client";
+"use client";
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
+  // after clikcing delete issue we use nextjs Router to send the user BACK to the issues page
+  const router = useRouter();
+
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger>
@@ -16,14 +21,22 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
         </AlertDialog.Description>
         <Flex mt="4" gap="3">
           <AlertDialog.Cancel>
-
             <Button variant="soft" color="gray">
               Cancel
             </Button>
           </AlertDialog.Cancel>
 
           <AlertDialog.Action>
-            <Button color="red">Delete Issue</Button>
+            <Button
+              onClick={async () => {
+                await axios.delete("/api/issues/" + issueId);
+                router.push("/issues");
+                router.refresh();
+              }}
+              color="red"
+            >
+              Delete Issue
+            </Button>
           </AlertDialog.Action>
         </Flex>
       </AlertDialog.Content>
