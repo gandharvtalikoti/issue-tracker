@@ -2,7 +2,7 @@
 import { Button, Callout, Text, TextField } from "@radix-ui/themes";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import { createIssueSchema } from "@/app/validationSchemas";
+import { issueSchema } from "@/app/validationSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
@@ -18,7 +18,7 @@ import { Issue } from "@prisma/client";
 // }
 
 // generating interface automatically based on schema !
-type IssueFormData = z.infer<typeof createIssueSchema>;
+type IssueFormData = z.infer<typeof issueSchema>;
 
 interface Props {
   issue?: Issue; // have made this optional because we only need this in the edit page
@@ -35,7 +35,7 @@ const IssueForm = ({ issue }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IssueFormData>({
-    resolver: zodResolver(createIssueSchema),
+    resolver: zodResolver(issueSchema),
   });
 
   const onSubmit = handleSubmit(async (data) => {
@@ -62,10 +62,11 @@ const IssueForm = ({ issue }: Props) => {
         </Callout.Root>
       )}
       <form onSubmit={onSubmit} className="space-y-3 ">
-        <TextField.Root defaultValue={issue?.title} placeholder="Title"
-          {...register("title")}>
-         
-        </TextField.Root>
+        <TextField.Root
+          defaultValue={issue?.title}
+          placeholder="Title"
+          {...register("title")}
+        ></TextField.Root>
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller
           defaultValue={issue?.description}

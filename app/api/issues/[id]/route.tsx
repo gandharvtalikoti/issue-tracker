@@ -1,4 +1,4 @@
-import { createIssueSchema } from "@/app/validationSchemas";
+import { issueSchema } from "@/app/validationSchemas";
 import prisma from "@/prisma/client";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -46,7 +46,7 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   const body = await request.json();
-  const validation = createIssueSchema.safeParse(body);
+  const validation = issueSchema.safeParse(body);
 
   if (!validation.success) {
     return NextResponse.json(validation.error.errors, { status: 400 });
@@ -73,4 +73,3 @@ export async function PUT(
   return NextResponse.json(updatedIssue);
   // - return the updated issue
 }
-
