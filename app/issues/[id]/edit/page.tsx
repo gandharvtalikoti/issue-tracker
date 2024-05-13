@@ -4,7 +4,7 @@ import React from 'react'
 
 const EditIssuePage = () => {
   return (
-    <div>EditIssuePage</div>
+    <div>Edit Issue Page</div>
   )
 }
 
