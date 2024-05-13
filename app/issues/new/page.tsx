@@ -45,6 +45,7 @@ const NewIssuePage = () => {
       console.log(error);
     }
   });
+  
 
   return (
     <div className="max-w-xl">
