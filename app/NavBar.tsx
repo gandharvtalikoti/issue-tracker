@@ -75,7 +75,6 @@ const AuthStaus = () => {
 
   return (
     <Box>
-      <Link href="/api/auth/signout">Log out</Link>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <Avatar

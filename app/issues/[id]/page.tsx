@@ -1,11 +1,16 @@
+import authOptions from "@/app/auth/authOptions";
 import prisma from "@/prisma/client";
 import { Box, Flex, Grid } from "@radix-ui/themes";
+import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
+import AssigneeSelect from "./AssigneeSelect";
+import DeleteIssueButton from "./DeleteIssueButton";
 import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
-import DeleteIssueButton from "./DeleteIssueButton";
 
 const IssueDetailPage = async ({ params }: { params: { id: string } }) => {
+  const session = await getServerSession(authOptions);
+
   // fetching data from database
   const issue = await prisma.issue.findUnique({
     where: { id: parseInt(params.id) },
@@ -22,20 +27,22 @@ const IssueDetailPage = async ({ params }: { params: { id: string } }) => {
       }}
       gap="5"
     >
-      
       {/*  this box is allocatted 4 cols out of 5 */}
-      <Box className="md:col-span-4"> 
+      <Box className="md:col-span-4">
         <IssueDetails issue={issue} />
       </Box>
 
       {/*  this box is allocatted 1 cols out of 5 */}
 
-      <Box>
-        <Flex direction="column" gap="4">
-          <EditIssueButton issueId={issue.id} />
-          <DeleteIssueButton issueId={issue.id} />
-        </Flex>
-      </Box>
+      {session && (
+        <Box>
+          <Flex direction="column" gap="4">
+            <AssigneeSelect />
+            <EditIssueButton issueId={issue.id} />
+            <DeleteIssueButton issueId={issue.id} />
+          </Flex>
+        </Box>
+      )}
     </Grid>
   );
 };
