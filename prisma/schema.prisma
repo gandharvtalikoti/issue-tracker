@@ -14,12 +14,16 @@ datasource db {
 }
 
 model Issue {
-  id          Int      @id @default(autoincrement())
-  title       String   @db.VarChar(255)
-  description String   @db.Text
-  status      Status   @default(OPEN)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id               Int      @id @default(autoincrement())
+  title            String   @db.VarChar(255)
+  description      String   @db.Text
+  status           Status   @default(OPEN)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  assignedToUserId String?  @db.VarChar(255)
+  assignedToUser   User?    @relation(fields: [assignedToUserId], references: [id]) // User? because not every user is assigned to issue
+  // fields: [assignedToUserId], references: [id] , means that assignedToUserId field in Issue model gets mapped to id field of User model
+  // this creates a relation
 }
 
 enum Status {
@@ -29,20 +33,22 @@ enum Status {
 }
 
 model User {
-  id            String          @id @default(cuid())
-  name          String?
-  username      String?         @unique
-  email         String?         @unique
-  emailVerified DateTime?
-  image         String?
-  Session       Session[]
-  Account       Account?
+  id             String          @id @default(cuid())
+  name           String?
+  username       String?         @unique
+  email          String?         @unique
+  emailVerified  DateTime?
+  image          String?
+  Session        Session[]
+  Account        Account?
   // Optional for WebAuthn support
-  hashedPassword      String?
-  Authenticator Authenticator[]
+  hashedPassword String?
+  Authenticator  Authenticator[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  assignedIssue Issue[] // reverse relation in User model to Issue model
+  // a user can have a bunch of assigned issues
 }
 
 model Account {
