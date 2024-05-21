@@ -5,15 +5,20 @@ import NextLink from "next/link";
 import IssueActions from "./IssueActions";
 import { Issue, Status } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
+import Pagination from "@/app/components/Pagination";
 
 interface Props {
   searchParams: {
     status: Status;
     orderBy: keyof Issue;
+    page: string;
   };
 }
 // add searchParams to filter by status
 const IssuesPage = async ({ searchParams }: Props) => {
+  const page = parseInt(searchParams.page) || 1;
+  const pageSize = 10;
+
   const columns: {
     label: string;
     value: keyof Issue;
@@ -25,10 +30,10 @@ const IssuesPage = async ({ searchParams }: Props) => {
   ];
 
   const statuses = Object.values(Status);
-
   const status = statuses.includes(searchParams.status)
     ? searchParams.status
     : undefined;
+  const where = { status };
 
   const orderBy = columns
     .map((column) => column.value)
@@ -37,11 +42,13 @@ const IssuesPage = async ({ searchParams }: Props) => {
     : undefined;
 
   const issues = await prisma.issue.findMany({
-    where: {
-      status, // filtering out by status
-    },
+    where, // filtering out by status, check line number 35
     orderBy,
+    skip: (page - 1) * pageSize, // number of records we should skip
+    take: pageSize, // number of records we wanna fetch
   });
+
+  const issueCount = await prisma.issue.count({ where });
   return (
     <div>
       <IssueActions />
@@ -49,7 +56,10 @@ const IssuesPage = async ({ searchParams }: Props) => {
         <Table.Header>
           <Table.Row>
             {columns.map((column) => (
-              <Table.ColumnHeaderCell key={column.value} className={column.className}>
+              <Table.ColumnHeaderCell
+                key={column.value}
+                className={column.className}
+              >
                 <NextLink
                   href={{
                     query: { ...searchParams, orderBy: column.value },
@@ -86,6 +96,11 @@ const IssuesPage = async ({ searchParams }: Props) => {
           ))}
         </Table.Body>
       </Table.Root>
+      <Pagination
+        pageSize={pageSize}
+        itemCount={issueCount}
+        currentPage={page}
+        />
     </div>
   );
 };
