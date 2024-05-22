@@ -3,7 +3,10 @@ import { Avatar, Card, Flex, Heading, Table } from "@radix-ui/themes";
 import Link from "next/link";
 import { IssueStatusBadge } from "./components";
 
+
+
 const LastestIssues = async () => {
+
   const issues = await prisma.issue.findMany({
     orderBy: { createdAt: "desc" }, // order by descendign order
     take: 5, // take top 5 records
