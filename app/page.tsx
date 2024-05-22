@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Pagination from "./components/Pagination";
-import { Button } from "@radix-ui/themes";
+import { Button, Flex, Grid } from "@radix-ui/themes";
 import { DoubleArrowLeftIcon } from "@radix-ui/react-icons";
 import LastestIssues from "./LastestIssues";
 import IssueSummary from "./IssueSummary";
@@ -15,9 +15,12 @@ export default async function Home() {
   const closed = await prisma.issue.count({ where: { status: "COMPLETED" } });
 
   return (
-    <>
-      <IssueSummary open={open} inProgress={inProgress} closed={closed} />
-      <IssueChart open={open} inProgress={inProgress} closed={closed} />
-    </>
+    <Grid gap='5' columns={{ initial: "1", md: "2" }}>
+      <Flex gap='5' direction="column">
+        <IssueSummary open={open} inProgress={inProgress} closed={closed} />
+        <IssueChart open={open} inProgress={inProgress} closed={closed} />
+      </Flex>
+      <LastestIssues />
+    </Grid>
   );
 }
