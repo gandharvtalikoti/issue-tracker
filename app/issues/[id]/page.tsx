@@ -7,17 +7,22 @@ import AssigneeSelect from "./AssigneeSelect";
 import DeleteIssueButton from "./DeleteIssueButton";
 import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
+import { cache } from "react";
+
 interface Props {
   params: { id: string };
 }
+
+const fetchIssue = cache((issueId: number) =>
+  prisma.issue.findUnique({ where: { id: issueId } })
+); // instead of connecting to db to call multiple times this will simple get it from cache
 
 const IssueDetailPage = async ({ params }: { params: { id: string } }) => {
   const session = await getServerSession(authOptions);
 
   // fetching data from database
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const issue = await fetchIssue(parseInt(params.id));
+
   if (!issue) {
     notFound();
   }
@@ -52,9 +57,7 @@ const IssueDetailPage = async ({ params }: { params: { id: string } }) => {
 
 // here we wanna have dynamic meatadata based on the title of the issue
 export async function generateMetadata({ params }: Props) {
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const issue = await fetchIssue(parseInt(params.id));
   return {
     title: issue?.title,
     description: "Details of issue " + issue?.id,
