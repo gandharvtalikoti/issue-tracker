@@ -1,0 +1,272 @@
+[33mcommit 7e43082665e3c8a4e65e8f60d30b9e5d143cabc5[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Sat May 25 07:52:53 2024 +0530
+
+    format
+
+[33mcommit 52a3692eb43f8d846508501cf67eaf9a135c8dd9[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Fri May 24 20:02:50 2024 +0530
+
+    Setup error tracking
+
+[33mcommit 50aa8ab704f79e0a34cf3a27e276478f5e26ebb7[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Fri May 24 19:32:26 2024 +0530
+
+    add an example env file
+
+[33mcommit 0b8014eebd516023f13d538a3ec1de70c85a1431[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Fri May 24 19:23:01 2024 +0530
+
+    Optimize performance using react cache
+
+[33mcommit 403e2b293b821fa1d4057fc5418dae97c4469432[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 22 18:41:51 2024 +0530
+
+    Add metadata
+
+[33mcommit 443877180f6a73f3b595390ba71c03ff484cf778[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 22 18:17:16 2024 +0530
+
+    Layout the dashboard
+
+[33mcommit 12958b93dfb7ffbff9c89336bb4429af9deac1ac[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 22 18:13:25 2024 +0530
+
+    Build the issue chart component
+
+[33mcommit b76a6f2d236aa6be13d9c2cdcd72779833917d97[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 22 17:48:30 2024 +0530
+
+    Build the issue Summary
+
+[33mcommit 982373cade036f4c3b5d0a7ab4ec1548e92cff5a[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 22 13:45:34 2024 +0530
+
+    Build the latest issue component
+
+[33mcommit 02d2444faa5c9b05f48b508023e26e17f03dd500[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 22 12:02:16 2024 +0530
+
+    Refactor extract issue table
+
+[33mcommit cbe305301f5f16ec6e5790b4b16925f8cf4a0b0d[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 21 19:21:15 2024 +0530
+
+    Paginate Issues
+
+[33mcommit ada1423fbad82280a9c9b016406e09efaa810a20[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 21 18:57:19 2024 +0530
+
+    Implement Pagination
+
+[33mcommit b25817905f5718bb39f52a35e7b1d169f9b35a58[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 21 15:39:03 2024 +0530
+
+    Build the layout of the pagenation component
+
+[33mcommit 3a735f923c60baa3d7f3ba35dd18b4fd8432e592[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 21 14:08:20 2024 +0530
+
+    Fix Filtering Bugs
+
+[33mcommit a10b0f3a7989b3c070d50b2169d4617a6265175e[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 21 12:06:16 2024 +0530
+
+    Sort Issues
+
+[33mcommit cf259f689ab23e1dd1732f1271be5323f5a232a5[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 21 11:14:40 2024 +0530
+
+    Make columns sortable
+
+[33mcommit 8962d0cf347e0eb3b11dc5623e686cdc04b98f59[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Mon May 20 16:27:58 2024 +0530
+
+    Filter issues
+
+[33mcommit e6deb8d143857f96f6ea1631db09c37749a63980[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Mon May 20 13:38:51 2024 +0530
+
+    Refactor assignee select component
+
+[33mcommit edd6656277dd9ee95e1fede66e3f617e0ff9ac61[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Mon May 20 13:19:32 2024 +0530
+
+    Show toast notifications
+
+[33mcommit d6efc884786a5d7441f5645aae1e7dcacba00553[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Thu May 16 21:07:05 2024 +0530
+
+    Enhance APi to assign issues
+
+[33mcommit 4177660da2378426b9c7007117482f04ddb49db6[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Thu May 16 11:15:47 2024 +0530
+
+    Add assigned issues to prisma schema
+
+[33mcommit 24997141f67bc6c8c0f9c4357c7f5e0274ca3453[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Thu May 16 11:04:37 2024 +0530
+
+    Fetch data with react query (cache)
+
+[33mcommit 2e47f25aa665f1d3af0f38ed368c7b50c5037811[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Thu May 16 10:42:23 2024 +0530
+
+    Setup React Query
+
+[33mcommit 9b11b29551c9247888b6a0e6565740fdd1d30089[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Thu May 16 01:10:56 2024 +0530
+
+    Populate the assignee select component
+
+[33mcommit 5b9353758b7a87dd0731fed9e8d560663d55fab5[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Thu May 16 00:45:15 2024 +0530
+
+    Build assignee select component
+
+[33mcommit 59e6ac0faa1d036cc232640dcd879e8c30928cc2[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 23:58:24 2024 +0530
+
+    add a loading skeleton
+
+[33mcommit d4fe303b6ca55f552188ea40a50c44a218d22940[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 23:52:28 2024 +0530
+
+    Refactor the NavBar
+
+[33mcommit e8eab57753b002d5df6039b3184dcf6e7ecfbe0d[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 22:54:11 2024 +0530
+
+    Fix avatar not loading
+
+[33mcommit 2daf793a032e200e90fcfbeb15d21be1b2f4354e[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 22:53:23 2024 +0530
+
+    Fix avatar not loading
+
+[33mcommit 7ff18fab3aada44f71748c208e06283e913afa3c[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 22:45:44 2024 +0530
+
+    Add a drop-down menu to show the current user
+
+[33mcommit 757e56888b3eb8dd33733488c69ab6beb8dbd348[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 22:36:41 2024 +0530
+
+    Change the layout of the navbar
+
+[33mcommit a5147ec5c7b7ebf4e82f91a80dc2ca0075417193[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 22:14:54 2024 +0530
+
+    add login and logout links
+
+[33mcommit 285f3949b7348d8c74515e6a0399c44276e23bc4[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 20:52:13 2024 +0530
+
+    corrected typo in .env
+
+[33mcommit efc7c8f05020c035f453e687980bd6058fd8b19e[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 15:53:52 2024 +0530
+
+    Add prisma Adapter
+
+[33mcommit 201c596455de51908f269994c17e346e6e686f9a[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Wed May 15 15:41:14 2024 +0530
+
+    Export handler from auth
+
+[33mcommit 1cf7634bfb21fe81a8f1f8ef7a98dec30040126f[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 14 11:04:25 2024 +0530
+
+    Configure Google Provider
+
+[33mcommit 43b7b6cd81c44fa1f240c829743030227383dad7[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 14 10:56:18 2024 +0530
+
+    Setup Next Auth
+
+[33mcommit 86abddb83814d58516c375a40151515a2b9e1381[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 14 10:49:25 2024 +0530
+
+    Removed Duplicate skeletons for good ux
+
+[33mcommit f08f004a4474b812c6d26914e1e245202680d08c[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 14 00:28:17 2024 +0530
+
+    improve the ux
+
+[33mcommit f2c57b33d27235bd1460461fdb308d859cd5a185[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 14 00:19:40 2024 +0530
+
+    Handle errors
+
+[33mcommit 5350c275da62d457b0850cf0cc2cf775fc471632[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Tue May 14 00:01:39 2024 +0530
+
+    Delete an issue
+
+[33mcommit 16bd89591647d976733b1a661ecd4a9f8ec20d7a[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Mon May 13 23:14:28 2024 +0530
+
+    Build an API for deleting issue
+
+[33mcommit 678693568ae2436cc334dba0ac8653ac5088518c[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Mon May 13 23:11:06 2024 +0530
+
+    Show a confirmation dialogue
+
+[33mcommit edf3ac47fb6f08a462e8932446a0626bc6666838[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Mon May 13 22:59:48 2024 +0530
+
+    Add a delete button
+
+[33mcommit 95b45c22d16b87f892d458f61ef3af817d7dd6a6[m
+Author: Gandharv Talikoti <gandharvtalikoti19@gmail>
+Date:   Mon May 13 20:44:15 2024 +0530
+
+    Improved the loading experience
+
+[33mcommit 3455cf7af3d8361c964c69a0664f93a680dfad0b[m
+Author: G
