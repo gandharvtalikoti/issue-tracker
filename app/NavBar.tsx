@@ -1,18 +1,17 @@
 "use client";
+import { Skeleton } from "@/app/components";
 import {
   Avatar,
-  Box,
   Container,
   DropdownMenu,
   Flex,
-  Text,
+  Text
 } from "@radix-ui/themes";
 import classnames from "classnames";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaBug } from "react-icons/fa";
-import { Skeleton } from "@/app/components";
 
 const NavBar = () => {
   return (
@@ -67,14 +66,18 @@ const AuthStaus = () => {
   // data: session -  with this we can get name, email and image
 
   if (status === "loading") {
-    return <Skeleton width='3rem'/>;
+    return <Skeleton width="3rem" />;
   }
   if (status == "unauthenticated") {
-    return <Link className="nav-link" href="/api/auth/signin">Log in</Link>;
+    return (
+      <Link className="nav-link" href="/api/auth/signin">
+        Log in
+      </Link>
+    );
   }
 
   return (
-    <Box>
+    <Flex>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <Avatar
@@ -95,7 +98,7 @@ const AuthStaus = () => {
           </Text>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
-    </Box>
+    </Flex>
   );
 };
 
