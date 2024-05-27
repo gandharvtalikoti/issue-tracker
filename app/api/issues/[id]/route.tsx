@@ -66,7 +66,7 @@ export async function PATCH(
   }
 
   // this is the part for validating assigned to user id
-  const { assignedToUserId, title, description } = body;
+  const { assignedToUserId, title, description, status } = body;
   if (assignedToUserId) {
     const user = await prisma.user.findUnique({
       where: { id: assignedToUserId },
@@ -78,12 +78,13 @@ export async function PATCH(
   const issue = await prisma.issue.findUnique({
     where: { id: parseInt(params.id) },
   });
+
   if (!issue)
     return NextResponse.json({ error: "Issue now found" }, { status: 404 });
 
   const updatedIssue = await prisma.issue.update({
     where: { id: issue.id },
-    data: { title, description, assignedToUserId },
+    data: { title, description, assignedToUserId, status },
   });
 
   return NextResponse.json(updatedIssue);
