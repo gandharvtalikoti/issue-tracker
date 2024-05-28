@@ -41,7 +41,7 @@ const IssueForm = ({ issue }: Props) => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setSubmitting(true);
-      if (issue) await axios.put("/api/issues/" + issue.id, data);
+      if (issue) await axios.patch("/api/issues/" + issue.id, data);
       else await axios.post("/api/issues", data);
       router.push("/issues/list");
       router.refresh();// this tells nextjs to refresh the content of the current route
